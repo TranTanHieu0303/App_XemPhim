@@ -18,8 +18,8 @@ namespace App_XemPhim.Controllers
     {
         IFirebaseConfig config = new FireSharp.Config.FirebaseConfig
         {
-            AuthSecret = "fYGMubOv2HiXc03sIJQgzs8rifr8RyJkHrFTZ7BQ",
-            BasePath = "https://appphim-dc807-default-rtdb.firebaseio.com/"
+            AuthSecret = "vDgBJNEJxSebDhSkPb7KYppj5kMNzIs0faVdci5Y",
+            BasePath = "https://do-an-ltdt-default-rtdb.firebaseio.com/"
         };
         IFirebaseClient client;
         public ActionResult Index()
@@ -214,12 +214,12 @@ namespace App_XemPhim.Controllers
                 var stream = file.InputStream;
 
                 //authentication
-                var auth = new FirebaseAuthProvider(new Firebase.Auth.FirebaseConfig("AIzaSyAKZ7K7KmoYFxo88dQRkeAHtngm67KD7t0"));
-                var a = await auth.SignInWithEmailAndPasswordAsync("trantanhieu1804@gmail.com", "180403");
+                var auth = new FirebaseAuthProvider(new Firebase.Auth.FirebaseConfig("AIzaSyDNngpU-uh01VhXvlNQBaaF3hgovaROFOU"));
+                var a = await auth.SignInWithEmailAndPasswordAsync("trantanhieu1804@gmail.com", "18040303");
 
                 // Constructr FirebaseStorage, path to where you want to upload the file and Put it there
                 var task = new FirebaseStorage(
-                    "appphim-dc807.appspot.com",
+                    "do-an-ltdt.appspot.com",
 
 
                      new FirebaseStorageOptions
