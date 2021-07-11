@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script type="text/javascript" async="" src="https://www.google-analytics.com/gtm/js?id=GTM-WJ88MZ5&amp;cid=1245205464.1614868132&amp;gac=_gaexp%3DGAX1.2.DI8dREjyRtenQ4lSxKFq-Q.18909.0"></script>
+    <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+    <script type="text/javascript" src="~/Content/bootstrap/js/jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="row" style="background-color: #0033FF ">
+        <div class="col-md-3"><img style="width:150px;height:100px" src="https://firebasestorage.googleapis.com/v0/b/appphim-dc807.appspot.com/o/image%2Flogo_3%20(1).png?alt=media&token=6a999d93-bc6f-40e9-9cdd-1589dad96e35" /></div>
+        <div class="col-md-6">
+            <div class="input-group" style="margin-top:20px">
+                <input type="text" class="form-control col-md-9" style="height:48px" id="search" placeholder="Search">
+                <div class="input-group-prepend">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/appphim-dc807.appspot.com/o/image%2Fsearch-icon.png?alt=media&token=c173282c-4b75-4c46-a194-9b11c574d8f6" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3" style="margin-top:20px">
+            <a class="btn-warning form-control w-50" href="@Url.Action("DangNhap","Home")">Đăng Xuất</a>
+        </div>
+    </div>
+    <div class="container" style="min-height:1000px">
+        @RenderBody()
+    </div>
+    <script charset="utf-8" src="~/Content/Phim.js"></script>
+</body>
+</html>

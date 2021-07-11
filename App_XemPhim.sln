@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31321.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App_XemPhim", "App_XemPhim\App_XemPhim.csproj", "{EDC154C3-530E-429A-9840-FB89E9EA721F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EDC154C3-530E-429A-9840-FB89E9EA721F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDC154C3-530E-429A-9840-FB89E9EA721F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDC154C3-530E-429A-9840-FB89E9EA721F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDC154C3-530E-429A-9840-FB89E9EA721F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CF680032-C089-4758-B501-F8084F657ADD}
+	EndGlobalSection
+EndGlobal

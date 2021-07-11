@@ -1,0 +1,216 @@
+﻿@using App_XemPhim.Models;
+@if (Session["tk"] == null)
+{
+    Response.Redirect("https://localhost:44388/Home/DangNhap");
+}
+
+<div class="row" style="background-color:dimgray; margin-top:5px; font-size:medium;color:white">
+    <div class="col-md-4">
+        <div class="col-md-10 ">
+            <ul>
+                <li>
+                    <p>Danh Mục</p>
+                    <ul>
+                        @if (ViewData["DM"] != null)
+                        {
+                            foreach (DanhMuc item in ViewData["DM"] as List<DanhMuc>)
+                            {
+                                <li>@item.TenDM</li>
+                            }
+                        }
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <img style="height:35px;width:35px; float:right" data-toggle="modal" data-target="#mymodelDM" src="https://firebasestorage.googleapis.com/v0/b/appphim-dc807.appspot.com/o/image%2Fadd-icon.png?alt=media&token=d9c7a8a5-8e66-44fd-9d32-16f49a144dc7" />
+    </div>
+    <div class="col-md-4">
+        <div class="col-md-10 ">
+            <ul>
+                <li>
+                    <p>Thể Loại</p>
+                    <ul>
+                        @if (ViewData["TL"] != null)
+                        {
+                            foreach (TheLoai item in ViewData["TL"] as List<TheLoai>)
+                            {
+                                <li>@item.TenTL</li>
+                            }
+                        }
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <img style="height: 35px; width: 35px; float: right" data-toggle="modal" data-target="#mymodelTL" src="https://firebasestorage.googleapis.com/v0/b/appphim-dc807.appspot.com/o/image%2Fadd-icon.png?alt=media&token=d9c7a8a5-8e66-44fd-9d32-16f49a144dc7" />
+    </div>
+    <div class="col-md-4">
+        <div class="col-md-10 ">
+            <ul>
+                <li>
+                    <p>Quốc Gia</p>
+                    <ul>
+                        @if (ViewData["QG"] != null)
+                        {
+                            foreach (QuocGia item in ViewData["QG"] as List<QuocGia>)
+                            {
+                                <li>@item.TenQG</li>
+                            }
+                        }
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <img style="height: 35px; width: 35px; float: right" data-toggle="modal" data-target="#mymodelQG" src="https://firebasestorage.googleapis.com/v0/b/appphim-dc807.appspot.com/o/image%2Fadd-icon.png?alt=media&token=d9c7a8a5-8e66-44fd-9d32-16f49a144dc7" />
+    </div>
+</div>
+<div class="modal " id="mymodelDM" tabindex="-1" role="dialog" aria-labelledby="mylabelDM" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header"><h3 class="modal-title" style="text-align:center">Thêm Danh Mục Phim</h3></div>
+            <div class="modal-body">
+                <form action="/Cuahang/DangKyChAsync" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label>Tên Danh Mục</label>
+                        <input type="text" class="form-control" id="TenDM" name="TenDM" />
+                    </div>
+                    <input class="form-control btn-success" type="button" value="ADD" onclick="AdDM();" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal " id="mymodelTL" tabindex="-1" role="dialog" aria-labelledby="mylabelTL" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header"><h3 class="modal-title" style="text-align:center">Thêm Thể Loại Phim</h3></div>
+            <div class="modal-body">
+                <form action="/Cuahang/DangKyChAsync" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label>Tên Thể Loại</label>
+                        <input type="text" class="form-control" id="TenTL" name="TenTL" />
+                    </div>
+                    <input class="form-control btn-success" type="submit" value="ADD" onclick="AddTL();" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal " id="mymodelQG" tabindex="-1" role="dialog" aria-labelledby="mylabelQG" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header"><h3 class="modal-title" style="text-align:center">Thêm Quốc Gia</h3></div>
+            <div class="modal-body">
+                <form action="/Cuahang/DangKyChAsync" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label>Tên Quốc Gia</label>
+                        <input type="text" class="form-control" id="TenQG" name="TênQG" />
+                    </div>
+                    <input class="form-control btn-success" type="submit" value="ADD" onclick="AddQG();" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <h2 class="col-md-10">Danh Sách Phim</h2>
+    <img style="height:40px;width:40px; float:right ; margin-top:7px" data-toggle="modal" data-target="#mymodelPhim" src="https://firebasestorage.googleapis.com/v0/b/appphim-dc807.appspot.com/o/image%2Fadd-icon.png?alt=media&token=d9c7a8a5-8e66-44fd-9d32-16f49a144dc7" />
+</div>
+<div class="row">
+    @if (ViewData["Phim"] == null)
+    {
+                <p>Chưa có phim nào được đăng tải</p>
+    }
+    else
+    {
+        foreach(Phim item in ViewData["Phim"] as List<Phim>)
+                {
+                    <div class="col-md-3 " style="padding:5px ; text-align:center">
+                        <img src="@item.HinhAnh" style="width:80% ;height: 70%" />
+                        <p>@item.TenPhim</p>
+                    </div>
+                }
+    }
+</div>
+<div class="modal " id="mymodelPhim" tabindex="-1" role="dialog" aria-labelledby="mylabelPhim" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header"><h3 class="modal-title" style="text-align:center">Thêm Phim</h3></div>
+            <div class="modal-body">
+                <form action="/Home/AddPhimAsync" method="post" enctype="multipart/form-data" id="frm_AddPhim" name="frm_AddPhim">
+                    <div class="form-group">
+                        <label>Tên Phim</label>
+                        <input type="text" class="form-control" id="TenP" name="TenP" />
+                    </div>
+                    <div class="form-group">
+                        <label>Danh Mục</label>
+                        <br />
+                        @if (ViewData["DM"] != null)
+                        {
+                            foreach (DanhMuc item in ViewData["DM"] as List<DanhMuc>)
+                            {
+                                <input type="checkbox" id="DM" name="DM" value="@item.MaDM">
+                                <label for="DM">@item.TenDM</label><br>
+                            }
+                        }
+                    </div>
+                    <div class="form-group">
+                        <label>Thể Loại</label>
+                        <br />
+                        @if (ViewData["TL"] != null)
+                        {
+                            foreach (TheLoai item in ViewData["TL"] as List<TheLoai>)
+                            {
+                                <input type="checkbox" id="TL" name="TL" value="@item.MaTL">
+                                <label for="TL">@item.TenTL</label><br>
+                            }
+                        }
+                    </div>
+                    <div class="form-group">
+                        <label>Quốc Gia</label>
+                        <br />
+                        <select class="form-control" style="height:30px ">
+
+                            @if (ViewData["QG"] != null)
+                            {
+                                foreach (QuocGia item in ViewData["QG"] as List<QuocGia>)
+                                {
+                                    <option class="form-control" value="@item.MaQG">@item.TenQG</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Hình ảnh</label>
+                        <img id="viewHinh"  />
+                        <input type="file" id="Hinh" name="Hinh"  />
+                    </div>
+                    <div class="form-group">
+                        <label>Mô Tả</label>
+                        <textarea class="form-control" id="MoTa" name="MoTa"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Diễn viên</label>
+                        <input type="text" class="form-control" id="DienVien" name="DienVien" />
+                    </div>
+                    <div class="form-group">
+                        <label>Thời lượng</label>
+                        <input type="text" class="form-control" id="ThoiLuong" name="ThoiLuong" />
+                    </div>
+                    <div class="form-group">
+                        <label>Số Tập</label>
+                        <input type="text" class="form-control" id="Sotap" name="Sotap" />
+                    </div>
+                    <div class="form-group">
+                        <label>Link Trailer</label>
+                        <input type="text" class="form-control" id="Trailer" name="Trailer" />
+                    </div>
+                    <div class="form-group">
+                        <label>Link Phim</label>
+                        <input type="text" class="form-control" id="LinkP" name="LinkP" />
+                    </div>
+                    <input class="btn-success form-control" type="button" onclick="AddPhim();" value="ADD" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

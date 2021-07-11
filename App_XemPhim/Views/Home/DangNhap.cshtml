@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "DangNhap";
+}
+<div class="text-center">
+    <div style="width: 500px; margin-right: auto; margin-left: auto ">
+        <h2>Đăng Nhập</h2>
+        <form class="form-group" action="/Home/DangNhap" method="post">
+            <input class="form-control" data-province="a" name="Tendn" id="Tendn" type="text" placeholder="Tên Đăng Nhập" />
+            <input class="form-control" name="Pass" id="Pass" type="text" placeholder="Mật Khẩu" style="margin-top:10px" />
+            @if (Request.HttpMethod == "POST")
+            {
+                if (ViewBag.tb != null)
+                {
+                    <p style="color:red">@ViewBag.tb</p>
+                }
+            }
+           
+            <input class="form-control btn-primary" type="submit" value="Đăng nhập" style="margin-top:20px" />
+        </form>
+    </div>
+</div>
+<script src="~/Content/Phim.js"></script>
