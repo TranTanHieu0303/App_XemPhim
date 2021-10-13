@@ -1,0 +1,19 @@
+﻿@model App_XemPhim.Models.TheLoai
+
+@{
+    ViewBag.Title = "DeleteTheLoai";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Xóa thành công</h3>
+<div>
+
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

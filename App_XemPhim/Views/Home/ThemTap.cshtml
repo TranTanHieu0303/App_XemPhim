@@ -1,0 +1,36 @@
+﻿@model App_XemPhim.Models.TapPhim
+
+@{
+    ViewBag.Title = "ThemTap";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ThemTap</h2>
+    
+    <div class="form-horizontal">
+        <h4>TapPhim</h4>
+        <hr />
+        <form action="/Home/ThemTapAsync" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <input type="text" value="@ViewBag.ma" id="maphim" name="maphim" />
+            </div>
+            <div class="form-group">
+                <label>Tên Tập</label>
+                <input class="form-control" type="text" id="tenTap" name="tenTap" />
+            </div>
+            <div class="form-group">
+                <label>Hình Ảnh</label>
+                <input class="form-control" type="file" id="Hinh" name="Hinh" />
+            </div>
+            <div class="form-group">
+                <label>Link Tập</label>
+                <input class="form-control" type="text" id="LinkTap" name="LinkTap" />
+            </div>
+            <input type="submit" value="Create" class="btn btn-default" />
+        </form>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -9,5 +9,6 @@ namespace App_XemPhim.Models
     {
         public string MaTL { get; set; }
         public string TenTL { get; set; }
+        public string HinhAnh { get; set; }
     }
 }

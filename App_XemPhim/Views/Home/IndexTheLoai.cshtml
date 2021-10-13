@@ -1,0 +1,35 @@
+﻿@model IEnumerable<App_XemPhim.Models.TheLoai>
+
+@{
+    ViewBag.Title = "IndexTheLoai";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chỉnh sửa thể loại</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaTL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenTL)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaTL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenTL)
+        </td>
+        <td>
+            <button class="btn">@Html.ActionLink("Edit", "EditTheLoai", new { id = item.MaTL })</button>
+            <button class="btn">@Html.ActionLink("Delete", "DeleteTheLoai", new { id = item.MaTL })</button>
+        </td>
+    </tr>
+}
+
+</table>

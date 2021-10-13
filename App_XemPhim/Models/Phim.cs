@@ -7,7 +7,7 @@ namespace App_XemPhim.Models
 {
     public class Phim
     {
-        public string MaPhim { get; set; }
+        public string MaPhim { get; set; }    
         public string TenPhim { get; set; }
         public string DanhMuc { get; set; }
         public string TheLoai { get; set; }

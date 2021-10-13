@@ -1,0 +1,36 @@
+﻿@model IEnumerable<App_XemPhim.Models.QuocGia>
+
+@{
+    ViewBag.Title = "IndexQuocGia";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chỉnh sửa quốc gia</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaQG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenQG)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaQG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenQG)
+        </td>
+        <td>
+            <button class="btn">@Html.ActionLink("Edit", "EditQuocGia", new { id = item.MaQG })</button>
+            <button class="btn">@Html.ActionLink("Delete", "DeleteQuocGia", new { id = item.MaQG })</button>      
+        </td>
+    </tr>
+}
+
+</table>

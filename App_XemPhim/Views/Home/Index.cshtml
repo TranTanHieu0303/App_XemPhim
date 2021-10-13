@@ -1,20 +1,34 @@
 ﻿@using App_XemPhim.Models;
+@model IEnumerable<App_XemPhim.Models.DanhMuc>
+@{
+    ViewBag.title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 @if (Session["tk"] == null)
 {
     Response.Redirect("https://localhost:44388/Home/DangNhap");
 }
 
+<link href="~/Content/editphim.css" rel="stylesheet" />
+
+
 <div class="row" style="background-color:dimgray; margin-top:5px; font-size:medium;color:white">
     <div class="col-md-4">
         <div class="col-md-10 ">
             <ul>
-                <li>
-                    <p>Danh Mục</p>
+                <li style="list-style-type:none">
+                    <h3>Danh Mục</h3>
+                    <button class="btn">
+                        @Html.ActionLink("Edit", "Index2")
+                    </button>
+                    <img style="height:35px;width:35px; margin-left:100px" data-toggle="modal" data-target="#mymodelDM" src="https://firebasestorage.googleapis.com/v0/b/appphim-dc807.appspot.com/o/image%2Fadd-icon.png?alt=media&token=d9c7a8a5-8e66-44fd-9d32-16f49a144dc7" />
                     <ul>
                         @if (ViewData["DM"] != null)
                         {
+                            string id;
                             foreach (DanhMuc item in ViewData["DM"] as List<DanhMuc>)
                             {
+
                                 <li>@item.TenDM</li>
                             }
                         }
@@ -22,13 +36,17 @@
                 </li>
             </ul>
         </div>
-        <img style="height:35px;width:35px; float:right" data-toggle="modal" data-target="#mymodelDM" src="https://firebasestorage.googleapis.com/v0/b/appphim-dc807.appspot.com/o/image%2Fadd-icon.png?alt=media&token=d9c7a8a5-8e66-44fd-9d32-16f49a144dc7" />
+        
     </div>
     <div class="col-md-4">
         <div class="col-md-10 ">
             <ul>
-                <li>
-                    <p>Thể Loại</p>
+                <li style="list-style-type:none">
+                    <h3>Thể Loại</h3>
+                    <button class="btn">
+                        @Html.ActionLink("Edit", "IndexTheLoai")
+                    </button>
+                    <img style="height: 35px; width: 35px; margin-left:120px" data-toggle="modal" data-target="#mymodelTL" src="https://firebasestorage.googleapis.com/v0/b/appphim-dc807.appspot.com/o/image%2Fadd-icon.png?alt=media&token=d9c7a8a5-8e66-44fd-9d32-16f49a144dc7" />
                     <ul>
                         @if (ViewData["TL"] != null)
                         {
@@ -41,13 +59,18 @@
                 </li>
             </ul>
         </div>
-        <img style="height: 35px; width: 35px; float: right" data-toggle="modal" data-target="#mymodelTL" src="https://firebasestorage.googleapis.com/v0/b/appphim-dc807.appspot.com/o/image%2Fadd-icon.png?alt=media&token=d9c7a8a5-8e66-44fd-9d32-16f49a144dc7" />
+        
     </div>
     <div class="col-md-4">
         <div class="col-md-10 ">
             <ul>
-                <li>
-                    <p>Quốc Gia</p>
+                <li style="list-style-type:none">
+                    <h3>Quốc Gia</h3>
+                    <button class="btn">
+                        @Html.ActionLink("Edit", "IndexQuocGia")
+                    </button>
+                    <img style="height: 35px; width: 35px; margin-left:100px" data-toggle="modal" data-target="#mymodelQG" src="https://firebasestorage.googleapis.com/v0/b/appphim-dc807.appspot.com/o/image%2Fadd-icon.png?alt=media&token=d9c7a8a5-8e66-44fd-9d32-16f49a144dc7" />
+
                     <ul>
                         @if (ViewData["QG"] != null)
                         {
@@ -60,7 +83,7 @@
                 </li>
             </ul>
         </div>
-        <img style="height: 35px; width: 35px; float: right" data-toggle="modal" data-target="#mymodelQG" src="https://firebasestorage.googleapis.com/v0/b/appphim-dc807.appspot.com/o/image%2Fadd-icon.png?alt=media&token=d9c7a8a5-8e66-44fd-9d32-16f49a144dc7" />
+        
     </div>
 </div>
 <div class="modal " id="mymodelDM" tabindex="-1" role="dialog" aria-labelledby="mylabelDM" aria-hidden="true">
@@ -113,22 +136,27 @@
 </div>
 <div class="row">
     <h2 class="col-md-10">Danh Sách Phim</h2>
+    <button class="btn" style="margin:6px 20px 10px 0px ; background-color:#f2c2c2">
+        @Html.ActionLink("Edit", "IndexPhim")
+    </button>
     <img style="height:40px;width:40px; float:right ; margin-top:7px" data-toggle="modal" data-target="#mymodelPhim" src="https://firebasestorage.googleapis.com/v0/b/appphim-dc807.appspot.com/o/image%2Fadd-icon.png?alt=media&token=d9c7a8a5-8e66-44fd-9d32-16f49a144dc7" />
 </div>
 <div class="row">
+
     @if (ViewData["Phim"] == null)
     {
-                <p>Chưa có phim nào được đăng tải</p>
+        <p>Chưa có phim nào được đăng tải</p>
     }
     else
     {
-        foreach(Phim item in ViewData["Phim"] as List<Phim>)
-                {
-                        <div class="col-md-3 " style="padding:5px ; text-align:center">
-                            <img src="@item.HinhAnh" style="width:80% ;height: 70%" />
-                            <p>@item.TenPhim</p>
-                        </div>
-                }
+        foreach (Phim item in ViewData["Phim"] as List<Phim>)
+        {
+            <div class="col-md-3 " style="padding:5px ; text-align:center">
+                @Html.ActionLink("Thêm Tập", "ThemTap",new{ id = item.MaPhim })
+                <img src="@item.HinhAnh" style="width:80% ;height: 70%" />
+                <p>@item.TenPhim</p>
+            </div>
+        }
     }
 </div>
 <div class="modal " id="mymodelPhim" tabindex="-1" role="dialog" aria-labelledby="mylabelPhim" aria-hidden="true">
@@ -149,7 +177,7 @@
                             foreach (DanhMuc item in ViewData["DM"] as List<DanhMuc>)
                             {
                                 <input type="checkbox" id="DM" name="DM" value="@item.MaDM">
-                                <label for="DM">@item.TenDM</label><br>
+                                <label id="DM" for="DM">@item.TenDM</label><br>
                             }
                         }
                     </div>
@@ -168,7 +196,7 @@
                     <div class="form-group">
                         <label>Quốc Gia</label>
                         <br />
-                        <select class="form-control" style="height:30px ">
+                        <select class="form-control" id="QG" name="QG" style="height:30px ">
 
                             @if (ViewData["QG"] != null)
                             {
@@ -181,8 +209,8 @@
                     </div>
                     <div class="form-group">
                         <label>Hình ảnh</label>
-                        <img id="viewHinh"  />
-                        <input type="file" id="Hinh" name="Hinh"  />
+                        <img id="viewHinh" />
+                        <input type="file" id="Hinh" name="Hinh" />
                     </div>
                     <div class="form-group">
                         <label>Mô Tả</label>
@@ -209,6 +237,31 @@
                         <input type="text" class="form-control" id="LinkP" name="LinkP" />
                     </div>
                     <input class="btn-success form-control" type="button" onclick="AddPhim();" value="ADD" />
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="modal " id="mymodeltapphim" tabindex="-1" role="dialog" aria-labelledby="mylabelTP" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header"><h3 class="modal-title" style="text-align:center">Thêm Tập Phim</h3></div>
+            <div class="modal-body">
+                <form action="/Home/AppTap" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label>Tên Tập Phim</label>
+                        <input type="text" class="form-control" id="TenTap" name="TênTap" />
+                    </div>
+                    <div class="form-group">
+                        <label>Hình Ảnh</label>
+                        <input type="file" class="form-control" id="HinhAnh" name="HinhAnh" />
+                    </div>
+                    <div class="form-group">
+                        <label>Link Tập Phim</label>
+                        <input type="text" class="form-control" id="LinkTap" name="LinkTap" />
+                    </div>
+                    <input class="form-control btn-success" type="submit" value="ADD" onclick="AddTAP();" />
                 </form>
             </div>
         </div>

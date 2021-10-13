@@ -1,0 +1,38 @@
+﻿@model IEnumerable<App_XemPhim.Models.DanhMuc>
+
+@{
+    ViewBag.Title = "Index2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chỉnh sửa danh mục</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaDM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenDM)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaDM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenDM)
+        </td>
+        <td>
+            <button class="btn">@Html.ActionLink("Edit", "Edit", new { id = item.MaDM })</button>
+            <button class="btn">@Html.ActionLink("Delete", "DeleteDM", new { id = item.MaDM })</button>
+            
+            
+        </td>
+    </tr>
+}
+
+</table>
